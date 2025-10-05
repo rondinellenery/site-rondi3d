@@ -1,114 +1,166 @@
-/* ===== Rondi3D – tema inspirado no layout de referência ===== */
-:root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --muted: #6b6b6b;
-  --brand: #ff6d00;         /* laranja das categorias */
-  --brand-dark: #e65f00;
-  --mint: #48b9a5;          /* verdinho de botões/links */
-  --topbar: #e21919;        /* faixa vermelha superior */
-  --panel: #f4f4f4;
-  --card: #ffffff;
-  --border: rgba(0,0,0,.08);
+/* =========================
+   Rondi3D — styles.css (v5)
+   ========================= */
+
+/* ===== Base ===== */
+:root{
+  --bg:#0f172a;          /* topo antigo (mantido se quiser usar) */
+  --light:#f8fafc;
+  --ink:#0b1020;
+  --muted:#64748b;
+  --brand:#0ea5e9;
+}
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+  color:#111;
+  background:#fff;
+  line-height:1.35;
 }
 
-body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-img { display: block; max-width: 100%; height: auto; }
+/* ===== (Opcional) Topbar antiga — desativada por padrão ===== */
+/* .topbar{
+  background:var(--bg);
+  color:var(--light);
+  text-align:center;
+  padding:.35rem .75rem;
+  font-size:.9rem;
+} */
 
-/* Top bar */
-.topbar { background: var(--topbar); color: #fff; }
+/* ===== Header base ===== */
+.header{
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+}
 
-/* Header */
-.header .pill { background: #cfe8e3; color: #0b3b33; padding: .5rem .9rem; border-radius: 32px; font-weight: 600; }
-.header .link-login { color: var(--mint); font-weight: 700; text-decoration: none; }
-.header .link-login:hover { text-decoration: underline; }
-.header .header-links a { color: #0b3b33; text-decoration: none; font-weight: 600; }
-.header .header-links a:hover { text-decoration: underline; }
+/* ===== Faixa de Contato (telefone + Whats + sessão) ===== */
+.contact-strip{
+  background:#e9f6f2;                 /* verde bem claro */
+  padding:.5rem 0;
+  border-top:1px solid #e5e7eb;
+  border-bottom:1px solid #e5e7eb;
+}
+.contact-strip .contacts .contact-item{
+  font-weight:600;
+  color:#0b1020;
+}
 
-/* Search */
-.search { background: #efefef; border: 2px solid #d9d9d9; height: 56px; }
-.search .form-control-plaintext { color: #555; }
-.btn-search { background: var(--mint); color: #fff; border-radius: 28px; padding: .6rem 1rem; border: 0; }
-.btn-search .icon-search { width: 22px; height: 22px; display: inline-block; background:
-  radial-gradient(circle at 40% 40%, #fff 35%, transparent 36%) 0 0/22px 22px no-repeat,
-  linear-gradient(#fff,#fff) center/3px 10px no-repeat; }
+/* Botão WhatsApp — independente do Bootstrap */
+.btn-whats{
+  display:inline-block;
+  background:#25D366;               /* verde WhatsApp */
+  color:#fff;
+  padding:.38rem .8rem;
+  border-radius:8px;
+  font-weight:700;
+  text-decoration:none;
+  border:0;
+  line-height:1;
+  transition:transform .05s ease, background-color .15s ease, box-shadow .15s ease;
+}
+.btn-whats:hover,
+.btn-whats:focus{
+  background:#1fb858;               /* leve escurecida no hover/focus */
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 0 0 .15rem rgba(37,211,102,.25);
+  transform:translateY(-1px);
+}
+.btn-whats:active{
+  transform:translateY(0);
+  box-shadow:none;
+}
 
-/* Main nav */
-.mainnav { background: var(--brand); color: #fff; padding: .85rem 0; position: sticky; top: 0; z-index: 1030; }
-.mainnav .nav-cat { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; position: relative; }
-.mainnav .nav-cat:hover { text-decoration: underline; }
-.mainnav .dot { opacity: .7; }
+/* ===== Menu “pílula” verde ===== */
+.pillnav{ background:transparent; }
+.pillnav .pillnav-inner{
+  background:#57c2ae;               /* verde menta */
+  color:#0b1020;
+  border-radius:999px;
+  padding:.55rem 1.1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.75rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.06) inset;
+}
+.pillnav .pillnav-inner a{
+  color:#0b1020;
+  text-decoration:none;
+  font-weight:700;
+}
+.pillnav .pillnav-inner a:hover{ text-decoration:underline; }
+.pillnav .pillnav-inner a.active{ text-decoration:underline; }
+.pillnav .sep{ opacity:.7; pointer-events:none; }
 
-/* Seções */
-.section-title { font-weight: 900; text-transform: uppercase; margin-bottom: 1rem; color: #112c2a; }
+/* Responsivo: quebra o menu com elegância */
+@media (max-width: 680px){
+  .pillnav .pillnav-inner{ flex-wrap:wrap; row-gap:.25rem; }
+  .contact-strip .session-links{ width:100%; justify-content:flex-end; }
+}
 
-/* === SOBRE A RONDI3D === */
-.about-card { background: var(--panel); border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,.06); }
-.about-badge { display: inline-block; background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: .2rem .6rem; font-weight: 800; font-size: .8rem; color: #112c2a; }
-.about-img { object-fit: cover; aspect-ratio: 1 / 1; }
+/* ===== (Oculta) Subnav antiga (categorias) ===== */
+.mainnav{ display:none; }
 
-/* Produto (mantido caso use depois) */
-.product-card { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding-bottom: 56px; overflow: hidden; }
-.product-card img { aspect-ratio: 1/1; object-fit: contain; background: #fafafa; }
-.product-badge { position: absolute; left: .75rem; top: .75rem; background: #cfe8e3; color: #0b3b33; font-weight: 700; border-radius: 999px; padding: .2rem .6rem; font-size: .8rem; }
-.product-name { font-size: 1rem; font-weight: 800; margin: .75rem .75rem 0; }
-.product-price { color: #e66000; font-weight: 900; font-size: 1.1rem; margin: .25rem .75rem; }
-.btn-circle { position: absolute; right: .75rem; bottom: .75rem; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--brand); color: #fff; font-size: 1.3rem; line-height: 1; display: grid; place-items: center; }
-.btn-circle:hover { background: var(--brand-dark); }
+/* ===== Hero ===== */
+.hero img{
+  max-height:360px;
+  object-fit:cover;
+  border-radius:14px;
+}
 
-/* ------- Cards de Post (ajuste de imagem com wrapper) ------- */
+/* ===== Cards / Posts ===== */
 .post-card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform .12s ease, box-shadow .12s ease;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  overflow:hidden;
+  height:100%;
+  display:flex;
+  flex-direction:column;
 }
-.post-card:hover{ transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,.06); }
-
-/* Thumb 16:9 consistente */
 .post-thumb{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #eef2f1;                /* placeholder */
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  overflow: hidden;
-}
-.post-thumb img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;                   /* corta sem distorcer */
-  display: block;
+  width:100%; height:180px;
+  object-fit:cover;
+  background:#eef2f7;
 }
 
-/* tag */
-.post-tag { display: inline-block; background: #ececec; border-radius: 999px; padding: .2rem .6rem; font-size: .8rem; font-weight: 700; }
-
-/* Newsletter */
-.newsletter { background: var(--brand); color: #fff; }
-.newsletter .btn-news { background: var(--mint); color: #07322b; font-weight: 800; border: 0; }
-
-/* Footer */
-.footer { background: var(--panel); border-top: 1px solid var(--border); }
-.footer h5 { font-weight: 900; text-transform: uppercase; font-size: .95rem; }
-.footer-links a { color: var(--text); text-decoration: none; }
-.footer-links a:hover { text-decoration: underline; }
-.social { width: 36px; height: 36px; border-radius: 8px; background: #ddd; display: inline-block; }
-
-/* Cookie bar */
-.cookiebar { position: sticky; bottom: 0; background: #f2f2f2; border-top: 1px solid var(--border); }
-.cookiebar .btn-accept { background: var(--brand); color: #fff; border: 0; padding: .6rem 1.25rem; border-radius: 999px; font-weight: 800; }
-
-/* Whatsapp float */
-.whats { position: fixed; right: 16px; bottom: 16px; background: #25d366; color: #fff; text-decoration: none; font-weight: 800; border-radius: 999px; padding: .8rem 1rem; box-shadow: 0 6px 18px rgba(0,0,0,.2); }
-
-/* Helpers */
-.text-secondary { color: var(--muted) !important; }
-
-@media (max-width: 992px) {
-  .header .header-links { display: none !important; }
+/* ===== Modal “lite” ===== */
+.modal-lite{
+  position:fixed; inset:0;
+  display:grid; place-items:center;
+  background:rgba(0,0,0,.4);
+  padding:1rem; z-index:20;
 }
+.modal-lite__content{
+  background:#fff;
+  border-radius:14px;
+  padding:1rem 1.25rem;
+  width:min(520px, 100%);
+  position:relative;
+}
+.modal-lite__close{
+  position:absolute; top:.5rem; right:.75rem;
+  background:transparent; border:0;
+  font-size:1.5rem; line-height:1;
+}
+
+/* ===== Footer ===== */
+.footer{
+  background:#0b1020;
+  color:#cbd5e1;
+  padding:1rem 0;
+  margin-top:3rem;
+}
+.footer a{ color:#e2e8f0; text-decoration:none; }
+.footer a:hover{ text-decoration:underline; }
+
+/* ===== Form / A11y ===== */
+.is-invalid{ border-color:#dc3545 }
+.alert[role="alert"]{ outline:0 }
+.form-text{ color:var(--muted) }
+
+/* ===== Utilitárias ===== */
+.rounded-14{ border-radius:14px; }
+.shadow-soft{ box-shadow:0 6px 24px rgba(0,0,0,.06); }

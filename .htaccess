@@ -1,0 +1,6 @@
+Options -Indexes
+DirectoryIndex index.php
+AddType application/x-httpd-php .php
+
+# 404 customizada (ajuste o caminho se mudar a pasta)
+ErrorDocument 404 /site-rondi3d/404.php

@@ -1,166 +1,123 @@
-/* =========================
-   Rondi3D — styles.css (v5)
-   ========================= */
-
-/* ===== Base ===== */
+/* ===== Base / Vars ===== */
 :root{
-  --bg:#0f172a;          /* topo antigo (mantido se quiser usar) */
+  --bg:#0f172a;
   --light:#f8fafc;
   --ink:#0b1020;
   --muted:#64748b;
   --brand:#0ea5e9;
 }
-*{ box-sizing:border-box }
-html,body{ height:100% }
+*{box-sizing:border-box}
+html, body{height:100%;}
 body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
   color:#111;
-  background:#fff;
-  line-height:1.35;
+  display:flex;              /* footer sempre no rodapé */
+  flex-direction:column;
+  min-height:100vh;
 }
 
-/* ===== (Opcional) Topbar antiga — desativada por padrão ===== */
-/* .topbar{
+/* ===== Container central ===== */
+.site-container{
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-left: 30px;   /* respiro lateral pedido */
+  padding-right: 30px;  /* respiro lateral pedido */
+}
+
+/* ===== Topbar ===== */
+.topbar{
   background:var(--bg);
   color:var(--light);
-  text-align:center;
-  padding:.35rem .75rem;
   font-size:.9rem;
-} */
-
-/* ===== Header base ===== */
-.header{
-  background:#fff;
-  border-bottom:1px solid #e5e7eb;
+  padding:.35rem 0;
 }
+.phone-badge{display:inline-flex; align-items:center; gap:.35rem; font-weight:600}
+.phone-ico{display:inline-block; width:18px; text-align:center}
 
-/* ===== Faixa de Contato (telefone + Whats + sessão) ===== */
-.contact-strip{
-  background:#e9f6f2;                 /* verde bem claro */
-  padding:.5rem 0;
-  border-top:1px solid #e5e7eb;
-  border-bottom:1px solid #e5e7eb;
-}
-.contact-strip .contacts .contact-item{
-  font-weight:600;
-  color:#0b1020;
-}
-
-/* Botão WhatsApp — independente do Bootstrap */
-.btn-whats{
-  display:inline-block;
-  background:#25D366;               /* verde WhatsApp */
-  color:#fff;
-  padding:.38rem .8rem;
-  border-radius:8px;
-  font-weight:700;
-  text-decoration:none;
+/* Botão WhatsApp corrigido */
+.btn-wa{
+  background:#25d366; 
   border:0;
-  line-height:1;
-  transition:transform .05s ease, background-color .15s ease, box-shadow .15s ease;
-}
-.btn-whats:hover,
-.btn-whats:focus{
-  background:#1fb858;               /* leve escurecida no hover/focus */
-  color:#fff;
+  color:#fff!important;
+  font-weight:600;
+  padding:.25rem .6rem;
+  border-radius:.6rem;
+  display:inline-flex; align-items:center; gap:.4rem;
   text-decoration:none;
-  box-shadow:0 0 0 .15rem rgba(37,211,102,.25);
-  transform:translateY(-1px);
 }
-.btn-whats:active{
-  transform:translateY(0);
-  box-shadow:none;
+.btn-wa:hover,.btn-wa:focus{filter:brightness(.95); color:#fff!important; text-decoration:none}
+
+/* ===== Header/Nav ===== */
+.header{background:#fff;border-bottom:1px solid #e5e7eb;}
+.main-menu .nav-link{color:#111; opacity:.8}
+.main-menu .nav-link:hover{opacity:1}
+
+/* ===== Subnav ===== */
+.mainnav{background:#f1f5f9;border-bottom:1px solid #e5e7eb;padding:.6rem 0}
+.mainnav .small{color:#111; opacity:.75}
+
+/* ===== Hero (se usar) ===== */
+.hero img{max-height:360px; object-fit:cover}
+
+/* ===== Cards “genéricos” ===== */
+.card.h-100{height:100%;}
+.post-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;height:100%; display:flex; flex-direction:column}
+.post-thumb{width:100%; height:180px; object-fit:cover; background:#eef2f7}
+
+/* ===== Blog / listagens ===== */
+.post-grid-title{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.post-meta{
+  color:#64748b; font-size:.9rem;
 }
 
-/* ===== Menu “pílula” verde ===== */
-.pillnav{ background:transparent; }
-.pillnav .pillnav-inner{
-  background:#57c2ae;               /* verde menta */
-  color:#0b1020;
-  border-radius:999px;
-  padding:.55rem 1.1rem;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:.75rem;
-  box-shadow:0 2px 8px rgba(0,0,0,.06) inset;
-}
-.pillnav .pillnav-inner a{
-  color:#0b1020;
-  text-decoration:none;
-  font-weight:700;
-}
-.pillnav .pillnav-inner a:hover{ text-decoration:underline; }
-.pillnav .pillnav-inner a.active{ text-decoration:underline; }
-.pillnav .sep{ opacity:.7; pointer-events:none; }
-
-/* Responsivo: quebra o menu com elegância */
-@media (max-width: 680px){
-  .pillnav .pillnav-inner{ flex-wrap:wrap; row-gap:.25rem; }
-  .contact-strip .session-links{ width:100%; justify-content:flex-end; }
-}
-
-/* ===== (Oculta) Subnav antiga (categorias) ===== */
-.mainnav{ display:none; }
-
-/* ===== Hero ===== */
-.hero img{
-  max-height:360px;
-  object-fit:cover;
-  border-radius:14px;
-}
-
-/* ===== Cards / Posts ===== */
-.post-card{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  border-radius:14px;
-  overflow:hidden;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-.post-thumb{
-  width:100%; height:180px;
-  object-fit:cover;
-  background:#eef2f7;
-}
-
-/* ===== Modal “lite” ===== */
-.modal-lite{
-  position:fixed; inset:0;
-  display:grid; place-items:center;
-  background:rgba(0,0,0,.4);
-  padding:1rem; z-index:20;
-}
-.modal-lite__content{
-  background:#fff;
-  border-radius:14px;
-  padding:1rem 1.25rem;
-  width:min(520px, 100%);
-  position:relative;
-}
-.modal-lite__close{
-  position:absolute; top:.5rem; right:.75rem;
-  background:transparent; border:0;
-  font-size:1.5rem; line-height:1;
-}
-
-/* ===== Footer ===== */
+/* ===== Footer (sempre colado ao rodapé) ===== */
 .footer{
   background:#0b1020;
   color:#cbd5e1;
   padding:1rem 0;
   margin-top:3rem;
 }
-.footer a{ color:#e2e8f0; text-decoration:none; }
-.footer a:hover{ text-decoration:underline; }
+.footer a{color:#e2e8f0}
+main.site-container{flex:1 0 auto;}
+footer.footer{flex-shrink:0}
 
-/* ===== Form / A11y ===== */
-.is-invalid{ border-color:#dc3545 }
-.alert[role="alert"]{ outline:0 }
-.form-text{ color:var(--muted) }
+/* ===== Form A11y ===== */
+.is-invalid{border-color:#dc3545}
+.alert[role="alert"]{outline:0}
+.form-text{color:var(--muted)}
 
-/* ===== Utilitárias ===== */
-.rounded-14{ border-radius:14px; }
-.shadow-soft{ box-shadow:0 6px 24px rgba(0,0,0,.06); }
+/* ===== Testimonials / Carousel ===== */
+.testimonial-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:24px;
+  min-height:170px;
+  max-width:860px;
+  margin:0 auto;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.testimonial-text{
+  font-size:1.05rem;
+  line-height:1.5;
+  color:#111;
+  margin-bottom:14px;
+}
+.testimonial-meta{
+  display:flex; align-items:center; gap:10px;
+}
+.testimonial-meta img{
+  width:40px; height:40px; border-radius:50%; object-fit:cover;
+  border:1px solid #e5e7eb;
+}
+
+/* garante que apenas o item ativo apareça */
+.carousel .carousel-item{display:none; transition:transform .6s ease-in-out;}
+.carousel .carousel-item.active{display:block;}
+
+/* ===== Melhorias responsivas para grades ===== */
+@media (min-width: 992px){
+  .row.g-3 > [class*='col'] .card{height:100%;}
+}

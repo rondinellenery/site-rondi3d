@@ -1,19 +1,19 @@
-  </div> <!-- .container -->
+<?php
+// /includes/footer.php
+?>
 </main>
 
-<footer class="footer">
-  <div class="container d-grid gap-2 gap-md-0 align-items-center" style="grid-template-columns: 1fr auto;">
-    <p class="mb-0 small">
-      © <?= date('Y'); ?> Rondi3D — Impressão 3D sob medida.
-      <a href="quem-somos.php" class="text-decoration-none">Sobre</a> ·
-      <a href="pedidodeorcamento.php" class="text-decoration-none">Orçamento</a>
-    </p>
-    <a class="btn btn-success btn-sm" href="https://wa.me/5585981636032" target="_blank" rel="noopener">
-      Falar no WhatsApp
-    </a>
+<footer class="site-footer">
+  <div class="site-container d-flex flex-wrap justify-content-between align-items-center gap-2 py-3">
+    <div>© <?= date('Y') ?> Rondi3D — Impressão 3D sob medida.</div>
+    <nav class="d-flex gap-3">
+      <a href="<?= h(BASE_URL) ?>quem-somos.php">Sobre</a>
+      <a href="<?= h(BASE_URL) ?>novo-orcamento.php">Orçamento</a>
+    </nav>
   </div>
 </footer>
 
-<script defer src="assets/js/app.js?v=3"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= h(BASE_URL) ?>assets/js/app.js"></script>
 </body>
 </html>

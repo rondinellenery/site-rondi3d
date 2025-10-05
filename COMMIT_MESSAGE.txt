@@ -1,0 +1,9 @@
+feat: fluxo de orçamentos + calculadora integrada, painel admin e blog
+
+- Novo fluxo: cálculo ↔ orçamento (PENDENTE/ESTIMADO/FINAL)
+- Upload de imagens versionado por ano/mês e URL pública
+- Painel admin p/ filtrar, atualizar status, calcular por orçamento e excluir
+- Botões “Quero calcular” e “Excluir orçamento” com CSRF
+- Calculadora: modo admin com parâmetros por orçamento (sem alterar defaults globais)
+- Layout central com respiro, header/subnav atualizados e footer fixo
+- Blog: listagem, busca e visualização de artigos

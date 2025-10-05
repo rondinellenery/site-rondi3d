@@ -1,120 +1,167 @@
 <?php
 require __DIR__.'/config.php';
-$title = "Rondi3D — Impressão 3D sob medida";
+$title = 'Home';
+
+// carrega últimos posts
+$pdo = db();
+$posts = $pdo->query("
+  SELECT id, slug, title, thumb_url, excerpt, created_at
+  FROM posts
+  WHERE published = 1
+  ORDER BY created_at DESC, id DESC
+  LIMIT 6
+")->fetchAll();
+
 include __DIR__.'/includes/header.php';
 ?>
 
-<!-- HERO -->
-<section class="row align-items-center g-4 hero">
-  <div class="col-lg-7">
-    <h1 class="display-5 fw-bold mb-3">Peças 3D com acabamento de loja</h1>
-    <p class="lead text-muted mb-4">
-      Sua ideia, pronta para usar: FDM e resina + modelagem para
-      <strong>colecionáveis</strong>, <strong>prototótipos</strong>,
-      <strong>artesanato</strong>, <strong>esculturas</strong> e
-      <strong>projetos acadêmicos</strong>.
-    </p>
-    <div class="d-flex gap-2">
-      <a href="calculadora.php" class="btn btn-primary">Calcular meu projeto</a>
-      <a href="quem-somos.php" class="btn btn-outline-secondary">Quem somos</a>
+<!-- TÓPICOS FIXOS -->
+<section class="mb-4">
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="<?= h(BASE_URL) ?>assets/img/posts/post1.png" class="card-img-top"
+             alt="Peça sob medida" style="aspect-ratio:16/9;object-fit:cover;">
+        <div class="card-body">
+          <h2 class="h5">Peça sob medida e personalizada</h2>
+          <p class="text-muted mb-0">Produzimos modelos únicos com alta precisão e ótimo acabamento.</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-lg-5 text-center">
-    <img src="assets/img/sobre.png" alt="Rondi3D — impressão 3D sob medida"
-         class="img-fluid rounded-14 shadow-soft" style="max-height:360px;object-fit:cover;">
-  </div>
-</section>
 
-<!-- DIFERENCIAIS RÁPIDOS -->
-<section class="my-4">
-  <div class="row g-3">
-    <div class="col-md-4">
-      <div class="p-3 border rounded-14 h-100">
-        <h3 class="h6 mb-1">Acabamento premium</h3>
-        <p class="mb-0 text-muted">Peças limpas, tolerâncias revisadas e, quando necessário, lixa/primer/pintura.</p>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="<?= h(BASE_URL) ?>assets/img/posts/post2.png" class="card-img-top"
+             alt="Protótipos e peças funcionais" style="aspect-ratio:16/9;object-fit:cover;">
+        <div class="card-body">
+          <h2 class="h5">Protótipos e peças funcionais</h2>
+          <p class="text-muted mb-0">Valide ideias rapidamente com peças robustas para testes.</p>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="p-3 border rounded-14 h-100">
-        <h3 class="h6 mb-1">FDM & Resina</h3>
-        <p class="mb-0 text-muted">Força e custo-benefício na FDM; detalhe fino e suavidade na resina.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="p-3 border rounded-14 h-100">
-        <h3 class="h6 mb-1">Orçamento transparente</h3>
-        <p class="mb-0 text-muted">Estimativa clara baseada em material e tempo — do jeito que combinamos.</p>
+
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="<?= h(BASE_URL) ?>assets/img/posts/post3.png" class="card-img-top"
+             alt="Artesanato e escultura" style="aspect-ratio:16/9;object-fit:cover;">
+        <div class="card-body">
+          <h2 class="h5">Artesanato e escultura</h2>
+          <p class="text-muted mb-0">Detalhe e acabamento para projetos artísticos e decorativos.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVIÇOS / VITRINE (sem boardgame) -->
-<section class="my-4">
-  <h2 class="h4 mb-3">Serviços em destaque</h2>
-  <div class="row g-3">
-    <div class="col-md-4">
-      <article class="post-card">
-        <img class="post-thumb" src="assets/img/post1.png" alt="Peças sob medida e personalizadas">
-        <div class="p-3 d-flex flex-column gap-1">
-          <h3 class="h6 mb-1">Peças sob medida</h3>
-          <p class="text-muted mb-2">Personalização, adaptações e soluções para uso real — do conceito à peça final.</p>
-          <div class="mt-auto d-flex gap-2">
-            <a class="btn btn-sm btn-primary" href="calculadora.php">Orçar minha peça</a>
-            <a class="btn btn-sm btn-outline-secondary" href="quem-somos.php">Saiba mais</a>
+<!-- CARROSSEL DE FEEDBACKS -->
+<section class="mb-5">
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    
+    <div class="h4 m-0">Feedbacks de clientes</div>
+  </div>
+
+  <div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Item 1 -->
+      <div class="carousel-item active">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            “Chegou perfeito! O encaixe ficou exato e o acabamento parece peça de fábrica.”
+          </div>
+          <div class="testimonial-meta">
+            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli1.jpg" alt="Cliente 1">
+            <div>
+              <div class="fw-semibold">João M.</div>
+              <div class="small text-muted">Fortaleza — CE</div>
+            </div>
           </div>
         </div>
-      </article>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="carousel-item">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            “Indico demais!!!
+Me deu atenção necessária desde o início da compra, até a retirada, tirou as dúvidas e fez exatamente do jeitinho que eu queria. Parabéns , superou minhas expectativas. 👏🏻👏🏻👏🏻”
+          </div>
+          <div class="testimonial-meta">
+            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli2.jpg" alt="Cliente 2">
+            <div>
+              <div class="fw-semibold">Kaylane Soares</div>
+              <div class="small text-muted">Fortaleza — CE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="carousel-item">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            “Pedi acabamento premium e ficou com cara de produto de prateleira. Recomendo!”
+          </div>
+          <div class="testimonial-meta">
+            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli3.jpg" alt="Cliente 3">
+            <div>
+              <div class="fw-semibold">Roberto C.</div>
+              <div class="small text-muted">Eusébio — CE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="col-md-4">
-      <article class="post-card">
-        <img class="post-thumb" src="assets/img/post2.png" alt="Prototipagem e peças funcionais">
-        <div class="p-3 d-flex flex-column gap-1">
-          <h3 class="h6 mb-1">Prototipagem & Funcionais</h3>
-          <p class="text-muted mb-2">Teste de forma, tolerâncias e encaixes com prazos honestos.</p>
-          <div class="mt-auto d-flex gap-2">
-            <a class="btn btn-sm btn-primary" href="calculadora.php">Orçar protótipo</a>
-            <a class="btn btn-sm btn-outline-secondary" href="quem-somos.php">Processo</a>
-          </div>
-        </div>
-      </article>
-    </div>
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próximo</span>
+    </button>
 
-    <div class="col-md-4">
-      <article class="post-card">
-        <img class="post-thumb" src="assets/img/post3.png" alt="Miniaturas, Esculturas e Actionfigures">
-        <div class="p-3 d-flex flex-column gap-1">
-          <h3 class="h6 mb-1">Miniaturas & Esculturas (Resina)</h3>
-          <p class="text-muted mb-2">Detalhe fino, superfícies suaves e acabamento de vitrine.</p>
-          <div class="mt-auto d-flex gap-2">
-            <a class="btn btn-sm btn-primary" href="calculadora.php">Orçar agora</a>
-            <a class="btn btn-sm btn-outline-secondary" href="quem-somos.php">Materiais</a>
-          </div>
-        </div>
-      </article>
+    <!-- Indicadores -->
+    <div class="carousel-indicators mt-2">
+      <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+      <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="2"></button>
     </div>
   </div>
 </section>
 
-<!-- CHAMADA FINAL -->
-<section class="my-5">
-  <div class="p-4 rounded-14 shadow-soft" style="background:#f6faf9;border:1px solid #e5e7eb">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-      <div>
-        <h2 class="h5 mb-1">Pronto pra tirar sua ideia do papel?</h2>
-        <p class="mb-0 text-muted">Faça uma estimativa agora e acompanhe seu pedido em <strong>Meus Orçamentos</strong>.</p>
-      </div>
-      <div class="d-flex gap-2">
-        <a href="calculadora.php" class="btn btn-primary">Calcular meu projeto</a>
-        <?php if (current_user()): ?>
-          <a href="meus-orcamentos.php" class="btn btn-outline-dark">Meus Orçamentos</a>
-        <?php else: ?>
-          <a href="signup.php" class="btn btn-outline-dark">Criar minha conta</a>
-        <?php endif; ?>
-      </div>
-    </div>
+<!-- ARTIGOS / BLOG -->
+<section class="mb-5">
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <h2 class="h4 m-0">Artigos recentes</h2>
+    <a class="btn btn-outline-primary btn-sm" href="<?= h(BASE_URL) ?>posts.php">Ver todos</a>
   </div>
+
+  <?php if (!$posts): ?>
+    <div class="alert alert-info">Ainda não há publicações.</div>
+  <?php else: ?>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <?php foreach ($posts as $p): ?>
+        <div class="col">
+          <a class="card h-100 text-decoration-none" href="<?= h(BASE_URL) ?>post.php?slug=<?= h($p['slug']) ?>">
+            <?php if (!empty($p['thumb_url'])): ?>
+              <img src="<?= h($p['thumb_url']) ?>" class="card-img-top"
+                   alt="<?= h($p['title']) ?>" style="aspect-ratio:16/9;object-fit:cover;">
+            <?php endif; ?>
+            <div class="card-body d-flex flex-column">
+              <div class="small text-muted mb-1"><?= h(date('d/m/Y', strtotime($p['created_at']))) ?></div>
+              <h3 class="h6 mb-2"><?= h($p['title']) ?></h3>
+              <div class="text-muted small mt-auto"
+                   style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+                <?= h($p['excerpt'] ?? '') ?>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
 </section>
 
 <?php include __DIR__.'/includes/footer.php'; ?>

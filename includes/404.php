@@ -1,7 +1,12 @@
-<?php $title = "Página não encontrada — Rondi3D"; include __DIR__."/includes/header.php"; ?>
-<section class="py-5 text-center">
-  <h1 class="display-6 fw-bold mb-2">404</h1>
-  <p class="text-muted mb-4">Ops… não achamos essa página.</p>
-  <a class="btn btn-primary" href="index.php">Voltar à Home</a>
-</section>
-<?php include __DIR__."/includes/footer.php"; ?>
+<?php
+require __DIR__.'/config.php';
+http_response_code(404);
+$title = 'Página não encontrada';
+include __DIR__.'/includes/header.php';
+?>
+<div class="container py-5 text-center">
+  <h1 class="display-6 mb-3">404</h1>
+  <p class="lead">Página não encontrada.</p>
+  <a class="btn btn-primary" href="index.php">Voltar ao início</a>
+</div>
+<?php include __DIR__.'/includes/footer.php'; ?>

@@ -9,45 +9,28 @@ $page  = max(1, (int)($_GET['p'] ?? 1));
 $per   = 9;
 $off   = ($page-1)*$per;
 
-$where = ["published = 1"];
+$where = ["published = 1", "COALESCE(type,'post') = 'post'"];
 $args  = [];
 
-/**
- * Tentamos usar FULLTEXT (MATCH ... AGAINST). Se der erro (ex.: índice ainda não criado),
- * fazemos fallback para LIKE simples.
- */
+/* busca (igual ao seu) */
 $useMatch = false;
 if ($q !== '') {
-  // 1) tenta MATCH
   $sqlTest = "SELECT COUNT(*) FROM posts WHERE published=1 AND MATCH(title,excerpt,body) AGAINST (? IN NATURAL LANGUAGE MODE)";
-  try {
-    $st = $pdo->prepare($sqlTest);
-    $st->execute([$q]);
-    $useMatch = true;
-  } catch (Throwable $e) {
-    $useMatch = false;
-  }
+  try { $st = $pdo->prepare($sqlTest); $st->execute([$q]); $useMatch = true; } catch (Throwable $e) { $useMatch = false; }
 
-  if ($useMatch) {
-    $where[] = "MATCH(title,excerpt,body) AGAINST (? IN NATURAL LANGUAGE MODE)";
-    $args[]  = $q;
-  } else {
-    $where[] = "(title LIKE ? OR IFNULL(excerpt,'') LIKE ? OR body LIKE ?)";
-    $args[]  = "%$q%";
-    $args[]  = "%$q%";
-    $args[]  = "%$q%";
-  }
+  if ($useMatch) { $where[] = "MATCH(title,excerpt,body) AGAINST (? IN NATURAL LANGUAGE MODE)"; $args[] = $q; }
+  else { $where[]="(title LIKE ? OR IFNULL(excerpt,'') LIKE ? OR body LIKE ?)"; $args[]="%$q%"; $args[]="%$q%"; $args[]="%$q%"; }
 }
 
 $wsql = 'WHERE '.implode(' AND ', $where);
 
-// total p/ paginação
+/* total */
 $st = $pdo->prepare("SELECT COUNT(*) FROM posts $wsql");
 $st->execute($args);
 $total = (int)$st->fetchColumn();
 $pages = max(1, (int)ceil($total/$per));
 
-// listagem
+/* listagem */
 $sql = "
   SELECT id, slug, title, thumb_url, excerpt, created_at
   FROM posts

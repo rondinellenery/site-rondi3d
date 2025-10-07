@@ -2,12 +2,12 @@
 require __DIR__.'/config.php';
 $title = 'Home';
 
-// carrega últimos posts
+// carrega últimos posts (somente ARTIGOS)
 $pdo = db();
 $posts = $pdo->query("
   SELECT id, slug, title, thumb_url, excerpt, created_at
   FROM posts
-  WHERE published = 1
+  WHERE published = 1 AND COALESCE(type,'post') = 'post'
   ORDER BY created_at DESC, id DESC
   LIMIT 6
 ")->fetchAll();
@@ -56,7 +56,6 @@ include __DIR__.'/includes/header.php';
 <!-- CARROSSEL DE FEEDBACKS -->
 <section class="mb-5">
   <div class="d-flex align-items-center justify-content-between mb-2">
-    
     <div class="h4 m-0">Feedbacks de clientes</div>
   </div>
 
@@ -65,49 +64,64 @@ include __DIR__.'/includes/header.php';
 
       <!-- Item 1 -->
       <div class="carousel-item active">
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            “Chegou perfeito! O encaixe ficou exato e o acabamento parece peça de fábrica.”
-          </div>
-          <div class="testimonial-meta">
-            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli1.jpg" alt="Cliente 1">
-            <div>
-              <div class="fw-semibold">João M.</div>
-              <div class="small text-muted">Fortaleza — CE</div>
+        <div class="testimonial-card d-flex">
+          <div class="flex-grow-1">
+            <div class="testimonial-text">
+              “Excelente trabalho. Proatividade total do Rondi. Não tinha o arquivo e ele achou e fez em pouco tempo o que queria. Recomendo demais e em breve voltarei com outros projetos.”
             </div>
+            <div class="testimonial-meta">
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli1.png" alt="Cliente 1">
+              <div>
+                <div class="fw-semibold">Lucas Romcy</div>
+                <div class="small text-muted">Fortaleza — CE</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions-right">
+            <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
       </div>
 
       <!-- Item 2 -->
       <div class="carousel-item">
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            “Indico demais!!!
-Me deu atenção necessária desde o início da compra, até a retirada, tirou as dúvidas e fez exatamente do jeitinho que eu queria. Parabéns , superou minhas expectativas. 👏🏻👏🏻👏🏻”
-          </div>
-          <div class="testimonial-meta">
-            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli2.jpg" alt="Cliente 2">
-            <div>
-              <div class="fw-semibold">Kaylane Soares</div>
-              <div class="small text-muted">Fortaleza — CE</div>
+        <div class="testimonial-card d-flex">
+          <div class="flex-grow-1">
+            <div class="testimonial-text">
+              “Indico demais!!! Me deu atenção necessária desde o início da compra, até a retirada,
+              tirou as dúvidas e fez exatamente do jeitinho que eu queria. Parabéns , superou minhas expectativas. 👏🏻👏🏻👏🏻”
             </div>
+            <div class="testimonial-meta">
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli2.jpg" alt="Cliente 2">
+              <div>
+                <div class="fw-semibold">Kaylane Soares</div>
+                <div class="small text-muted">Fortaleza — CE</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions-right">
+            <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
       </div>
 
       <!-- Item 3 -->
       <div class="carousel-item">
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            “Pedi acabamento premium e ficou com cara de produto de prateleira. Recomendo!”
-          </div>
-          <div class="testimonial-meta">
-            <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli3.jpg" alt="Cliente 3">
-            <div>
-              <div class="fw-semibold">Roberto C.</div>
-              <div class="small text-muted">Eusébio — CE</div>
+        <div class="testimonial-card d-flex">
+          <div class="flex-grow-1">
+            <div class="testimonial-text">
+              “Pedi acabamento premium e ficou com cara de produto de prateleira. Recomendo!”
             </div>
+            <div class="testimonial-meta">
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli3.jpg" alt="Cliente 3">
+              <div>
+                <div class="fw-semibold">Roberto C.</div>
+                <div class="small text-muted">Eusébio — CE</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions-right">
+            <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
       </div>
@@ -164,4 +178,4 @@ Me deu atenção necessária desde o início da compra, até a retirada, tirou a
   <?php endif; ?>
 </section>
 
-<?php include __DIR__.'/includes/footer.php'; ?>
+<?php include __DIR__.'/includes/footer.php';

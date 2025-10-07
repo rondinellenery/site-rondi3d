@@ -15,7 +15,7 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
   <title><?= isset($title) ? h($title).' · ' : '' ?>Rondi3D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 (CSS) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
   <!-- Seu CSS -->
@@ -44,9 +44,17 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
       <strong class="text-dark">Rondi3D</strong>
     </a>
 
-    <nav class="d-flex align-items-center gap-3 main-menu">
+    <!-- Botão hambúrguer: só mobile -->
+    <button class="nav-toggle d-inline-flex d-lg-none align-items-center justify-content-center"
+            id="navToggle" aria-controls="mobileDrawer" aria-expanded="false" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Menu desktop -->
+    <nav class="d-none d-lg-flex align-items-center gap-2 main-menu" aria-label="Menu principal">
       <a class="nav-link" href="<?= h(BASE_URL) ?>index.php">Home</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>quem-somos.php">Quem Somos</a>
+      <a class="nav-link" href="<?= h(BASE_URL) ?>galeria.php">Galeria</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>posts.php">Artigos</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>calculadora.php">Calculadora 3D</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>meus-orcamentos.php">Meus Orçamentos</a>
@@ -57,13 +65,39 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
       <?php endif; ?>
 
       <?php if ($user): ?>
-        <span class="small text-muted d-none d-md-inline">Olá, <?= h($user['name']) ?></span>
-        <a class="btn btn-outline-secondary btn-sm" href="<?= h(BASE_URL) ?>logout.php">Sair</a>
+        <span class="small text-muted ms-2">Olá, <?= h($user['name']) ?></span>
+        <a class="btn btn-outline-secondary btn-sm ms-1" href="<?= h(BASE_URL) ?>logout.php">Sair</a>
       <?php else: ?>
-        <a class="btn btn-outline-primary btn-sm" href="<?= h(BASE_URL) ?>login.php">Entrar / Cadastrar-se</a>
+        <a class="btn btn-outline-primary btn-sm ms-1" href="<?= h(BASE_URL) ?>login.php">Entrar / Cadastrar-se</a>
       <?php endif; ?>
     </nav>
   </div>
+
+  <!-- Drawer Mobile -->
+  <aside class="drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav" aria-label="Menu móvel">
+      <ul class="list-unstyled m-0">
+        <li><a href="<?= h(BASE_URL) ?>index.php">Home</a></li>
+        <li><a href="<?= h(BASE_URL) ?>quem-somos.php">Quem Somos</a></li>
+        <li><a href="<?= h(BASE_URL) ?>galeria.php">Galeria</a></li>
+        <li><a href="<?= h(BASE_URL) ?>posts.php">Artigos</a></li>
+        <li><a href="<?= h(BASE_URL) ?>calculadora.php">Calculadora 3D</a></li>
+        <li><a href="<?= h(BASE_URL) ?>meus-orcamentos.php">Meus Orçamentos</a></li>
+        <?php if (is_admin()): ?>
+          <li><a class="text-danger" href="<?= h(BASE_URL) ?>admins_orcamentos.php">Admin</a></li>
+          <li><a class="text-danger" href="<?= h(BASE_URL) ?>admin_posts.php">Posts (Admin)</a></li>
+        <?php endif; ?>
+        <?php if ($user): ?>
+          <li class="mt-2"><span class="small text-muted d-block px-1">Olá, <?= h($user['name']) ?></span></li>
+          <li><a href="<?= h(BASE_URL) ?>logout.php">Sair</a></li>
+        <?php else: ?>
+          <li><a href="<?= h(BASE_URL) ?>login.php">Entrar / Cadastrar-se</a></li>
+        <?php endif; ?>
+      </ul>
+    </nav>
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">×</button>
+  </aside>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
 </header>
 
 <!-- Subnav -->

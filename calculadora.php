@@ -20,7 +20,9 @@ include __DIR__.'/includes/header.php';
 <?php endif; ?>
 
 <p class="text-muted mb-4">
-  Informe apenas <strong>peso (g)</strong> e <strong>tempo</strong>. Os demais custos usam os valores padrão.
+  Informe apenas <strong>peso (g)</strong> e <strong>tempo</strong>. Os demais custos usam os valores padrão.</p>
+ <p><strong><span style="color:red;">OBSERVAÇÃO IMPORTANTE: Essa calculadora só deverá ser usada caso você tenha conhecimento previo no uso de fatiadores 3D. 
+Caso não o tenha, deixe para nossa equipe que irá analisar seu caso, mais detalhes fale em nosso <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>.</span></strong>
 </p>
 
 <form id="calcForm" class="row g-3">

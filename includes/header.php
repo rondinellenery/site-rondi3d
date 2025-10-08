@@ -30,8 +30,8 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
       <span class="phone-badge"><span class="phone-ico">☎</span> <?= h($fone_visivel) ?></span>
       <a class="btn btn-wa btn-sm" href="<?= h($wa_link) ?>" target="_blank" rel="noopener">WhatsApp</a>
     </div>
-    <div class="small text-light">
-      Orçamentos rápidos — <a class="link-light text-decoration-underline" href="<?= h(BASE_URL) ?>novo-orcamento.php">Pedir agora</a>
+    <div class="small text-light fw-bold text-uppercase">
+      Orçamentos rápidos — <a class="link-light text-decoration-underline fw-bold text-uppercase" href="<?= h(BASE_URL) ?>novo-orcamento.php">Pedir agora</a>
     </div>
   </div>
 </div>
@@ -40,8 +40,8 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
 <header class="header py-2">
   <div class="site-container d-flex align-items-center justify-content-between">
     <a class="d-flex align-items-center gap-2 text-decoration-none" href="<?= h(BASE_URL) ?>index.php">
-      <img src="<?= h(BASE_URL) ?>assets/img/logo.png" alt="Rondi3D" height="26">
-      <strong class="text-dark">Rondi3D</strong>
+      <img src="<?= h(BASE_URL) ?>assets/img/logo.png" alt="Rondi3D" height="60">
+      
     </a>
 
     <!-- Botão hambúrguer: só mobile -->
@@ -51,7 +51,7 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
     </button>
 
     <!-- Menu desktop -->
-    <nav class="d-none d-lg-flex align-items-center gap-2 main-menu" aria-label="Menu principal">
+    <nav class="d-none d-lg-flex align-items-center gap-2 main-menu destaque" aria-label="Menu principal">
       <a class="nav-link" href="<?= h(BASE_URL) ?>index.php">Home</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>quem-somos.php">Quem Somos</a>
       <a class="nav-link" href="<?= h(BASE_URL) ?>galeria.php">Galeria</a>
@@ -104,7 +104,7 @@ $wa_link      = "https://wa.me/55{$fone_num}?text=Ol%C3%A1%2C%20vim%20pelo%20sit
 <div class="mainnav">
   <div class="site-container d-flex align-items-center justify-content-between">
     <div class="small text-muted">
-      Impressão FDM • Resina • Modelagem 3D • Protótipos • Artesanato e Esculturas • Projetos Acadêmicos
+      <span class="fst-italic">“Desafios não existem para te parar, e sim para te mostrar até onde suas metas podem te levar.”</span>
     </div>
     <form action="<?= h(BASE_URL) ?>posts.php" method="get" class="d-none d-md-block">
       <input class="form-control form-control-sm" type="text" name="q" placeholder="Buscar artigos…">

@@ -18,45 +18,63 @@ include __DIR__.'/includes/header.php';
 <!-- TÓPICOS FIXOS -->
 <section class="mb-4">
   <div class="row row-cols-1 row-cols-md-3 g-3">
+    <!-- CARD 1: guia de orçamento -->
     <div class="col">
-      <div class="card h-100 shadow-sm">
+      <a class="card h-100 shadow-sm text-decoration-none"
+         href="<?= h(BASE_URL) ?>guia-orcamento-3d.php">
         <img src="<?= h(BASE_URL) ?>assets/img/posts/post1.png" class="card-img-top"
              alt="Peça sob medida" style="aspect-ratio:16/9;object-fit:cover;">
         <div class="card-body">
-          <h2 class="h5">Peça sob medida e personalizada</h2>
-          <p class="text-muted mb-0">Produzimos modelos únicos com alta precisão e ótimo acabamento.</p>
+          <h2 class="h5 mb-1 text-dark text-center">Como funciona o Orçamento?</h2>
+          <p class="text-muted mb-0 text-center">Sem complicação e direto ao ponto esclarecendo como funciona o nosso processo de orçamento.</p>
         </div>
-      </div>
+      </a>
     </div>
 
+    <!-- CARD 2: redes sociais -->
     <div class="col">
-      <div class="card h-100 shadow-sm">
+      <a class="card h-100 shadow-sm text-decoration-none"
+         href="<?= h(BASE_URL) ?>redes-sociais.php">
         <img src="<?= h(BASE_URL) ?>assets/img/posts/post2.png" class="card-img-top"
-             alt="Protótipos e peças funcionais" style="aspect-ratio:16/9;object-fit:cover;">
+             alt="Nossas Redes Sociais" style="aspect-ratio:16/9;object-fit:cover;">
         <div class="card-body">
-          <h2 class="h5">Protótipos e peças funcionais</h2>
-          <p class="text-muted mb-0">Valide ideias rapidamente com peças robustas para testes.</p>
+          <h2 class="h5 text-center">Nossas Redes Sociais</h2>
+          <p class="text-muted mb-0 text-center">Acompanhe nossas Redes Sociais e fique por dentro em tempo real do que há de novo.</p>
         </div>
-      </div>
+      </a>
     </div>
 
+    <!-- CARD 3: minha história -->
     <div class="col">
-      <div class="card h-100 shadow-sm">
+      <a class="card h-100 shadow-sm text-decoration-none"
+         href="<?= h(BASE_URL) ?>minha-historia.php">
         <img src="<?= h(BASE_URL) ?>assets/img/posts/post3.png" class="card-img-top"
-             alt="Artesanato e escultura" style="aspect-ratio:16/9;object-fit:cover;">
+             alt="Quando o Hobby se Torna Profissão" style="aspect-ratio:16/9;object-fit:cover;">
         <div class="card-body">
-          <h2 class="h5">Artesanato e escultura</h2>
-          <p class="text-muted mb-0">Detalhe e acabamento para projetos artísticos e decorativos.</p>
+          <h2 class="h5 text-center">Quando o Hobby se Torna Profissão</h2>
+          <p class="text-muted mb-0 text-center">Vou compartilhar como transformei meu hobby em uma carreira de sucesso.</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- CARROSSEL DE FEEDBACKS -->
-<section class="mb-5">
-  <div class="d-flex align-items-center justify-content-between mb-2">
-    <div class="h4 m-0">Feedbacks de clientes</div>
+
+
+<!-- CARROSSEL DE FEEDBACKS (com visual de confiança) -->
+<section class="mb-5 section-trust">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h2 class="h4 trust-title m-0">
+      <span class="dot"></span> Feedbacks de clientes
+    </h2>
+
+    <!-- Selo opcional de “avaliações verificadas” -->
+    <span class="trust-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20 7l-9 9-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Avaliações verificadas
+    </span>
   </div>
 
   <div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -66,18 +84,19 @@ include __DIR__.'/includes/header.php';
       <div class="carousel-item active">
         <div class="testimonial-card d-flex">
           <div class="flex-grow-1">
-            <div class="testimonial-text">
-              “Excelente trabalho. Proatividade total do Rondi. Não tinha o arquivo e ele achou e fez em pouco tempo o que queria. Recomendo demais e em breve voltarei com outros projetos.”
+            <div class="testimonial-quote">
+              Excelente trabalho. Proatividade total do Rondi. Não tinha o arquivo e ele achou e fez em pouco
+              tempo o que queria. Recomendo demais e em breve voltarei com outros projetos.
             </div>
             <div class="testimonial-meta">
-              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli1.png" alt="Cliente 1">
-              <div>
-                <div class="fw-semibold">Lucas Romcy</div>
-                <div class="small text-muted">Fortaleza — CE</div>
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli1.png" alt="Lucas Romcy">
+              <div class="testimonial-person">
+                <span class="testimonial-name">Lucas Romcy</span>
+                <span class="testimonial-loc">Fortaleza — CE</span>
               </div>
             </div>
           </div>
-          <div class="actions-right">
+          <div class="actions-right ms-3">
             <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
@@ -87,19 +106,19 @@ include __DIR__.'/includes/header.php';
       <div class="carousel-item">
         <div class="testimonial-card d-flex">
           <div class="flex-grow-1">
-            <div class="testimonial-text">
-              “Indico demais!!! Me deu atenção necessária desde o início da compra, até a retirada,
-              tirou as dúvidas e fez exatamente do jeitinho que eu queria. Parabéns , superou minhas expectativas. 👏🏻👏🏻👏🏻”
+            <div class="testimonial-quote">
+              Indico demais! Me deu atenção desde o início da compra até a retirada, tirou as dúvidas e fez
+              exatamente do jeitinho que eu queria. Parabéns, superou minhas expectativas.
             </div>
             <div class="testimonial-meta">
-              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli2.jpg" alt="Cliente 2">
-              <div>
-                <div class="fw-semibold">Kaylane Soares</div>
-                <div class="small text-muted">Fortaleza — CE</div>
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli2.jpg" alt="Kaylane Soares">
+              <div class="testimonial-person">
+                <span class="testimonial-name">Kaylane Soares</span>
+                <span class="testimonial-loc">Fortaleza — CE</span>
               </div>
             </div>
           </div>
-          <div class="actions-right">
+          <div class="actions-right ms-3">
             <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
@@ -109,18 +128,19 @@ include __DIR__.'/includes/header.php';
       <div class="carousel-item">
         <div class="testimonial-card d-flex">
           <div class="flex-grow-1">
-            <div class="testimonial-text">
-              “Pedi acabamento premium e ficou com cara de produto de prateleira. Recomendo!”
+            <div class="testimonial-quote">
+              Muito boa a experiência, ótimo preço e atendimento. Excelente profissional!
+              Fiz a máscara do Líder do Round 6 e ficou perfeita.
             </div>
             <div class="testimonial-meta">
-              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli3.jpg" alt="Cliente 3">
-              <div>
-                <div class="fw-semibold">Roberto C.</div>
-                <div class="small text-muted">Eusébio — CE</div>
+              <img src="<?= h(BASE_URL) ?>assets/img/avatars/cli3.png" alt="Walmir Queiroz">
+              <div class="testimonial-person">
+                <span class="testimonial-name">Walmir Queiroz</span>
+                <span class="testimonial-loc">Eusébio — CE</span>
               </div>
             </div>
           </div>
-          <div class="actions-right">
+          <div class="actions-right ms-3">
             <a href="<?= h(BASE_URL) ?>galeria.php" class="btn btn-sm btn-outline-primary">Ver projeto</a>
           </div>
         </div>
@@ -130,10 +150,12 @@ include __DIR__.'/includes/header.php';
 
     <!-- Controles -->
     <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próximo</span>
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Próximo</span>
     </button>
 
     <!-- Indicadores -->

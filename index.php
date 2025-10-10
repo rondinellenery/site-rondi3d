@@ -49,10 +49,10 @@ include __DIR__.'/includes/header.php';
       <a class="card h-100 shadow-sm text-decoration-none"
          href="<?= h(BASE_URL) ?>minha-historia.php">
         <img src="<?= h(BASE_URL) ?>assets/img/posts/post3.png" class="card-img-top"
-             alt="Quando o Hobby se Torna Profissão" style="aspect-ratio:16/9;object-fit:cover;">
+             alt="Do papel ao 3D: uma História de resiliéncia e criação" style="aspect-ratio:16/9;object-fit:cover;">
         <div class="card-body">
-          <h2 class="h5 text-center">Quando o Hobby se Torna Profissão</h2>
-          <p class="text-muted mb-0 text-center">Vou compartilhar como transformei meu hobby em uma carreira de sucesso.</p>
+          <h2 class="h5 text-center">Do papel ao 3D: uma História de resiliéncia e criação</h2>
+          <p class="text-muted mb-0 text-center">"Quando a gente não tem como comprar, a gente aprende a fazer"</p>
         </div>
       </a>
     </div>

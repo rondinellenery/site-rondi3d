@@ -50,8 +50,8 @@ include __DIR__ . '/includes/header.php';
       <div class="col-md-6">
         <!-- FOTO 01 (troque quando quiser) -->
         <figure class="story-figure">
-          <img src="<?= h(BASE_URL) ?>assets/img/historia/hero-01.jpg" alt="Rondi3D — infância analógica e curiosidade" />
-          <figcaption class="story-cap">Espaço para uma foto da infância/juventude ou algo que represente tua origem.</figcaption>
+          <img src="<?= h(BASE_URL) ?>assets/img/historia/hero-01.png" alt="Rondi3D — infância analógica e curiosidade" />
+          <figcaption class="story-cap">Você deve canalisar o que aprendeu, mirar no objetivo e executar.</figcaption>
         </figure>
       </div>
       <div class="col-md-6">
@@ -81,8 +81,8 @@ include __DIR__ . '/includes/header.php';
     </p>
     <!-- FOTO 02 -->
     <figure class="story-figure mt-3">
-      <img src="<?= h(BASE_URL) ?>assets/img/historia/hero-02.jpg" alt="Referências de cultura pop que inspiraram a trajetória" />
-      <figcaption class="story-cap">Espaço para pôsteres, HQs, brinquedos ou referências que te marcaram.</figcaption>
+      <img src="<?= h(BASE_URL) ?>assets/img/historia/manchete.jpg" alt="Referências de cultura pop que inspiraram a trajetória" />
+      <figcaption class="story-cap">Tv Manchete inspirou uma geração a amor o oriente.</figcaption>
     </figure>
   </section>
 
@@ -102,12 +102,12 @@ include __DIR__ . '/includes/header.php';
       <strong>Curiosidade:</strong> muita gente na comunidade maker trilhou um caminho parecido — começou com papel, foam, MDF, argila, e migrou para
       <strong>impressão 3D</strong> quando ela ficou mais acessível. O importante é que <em>toda técnica</em> agrega repertório.
     </div>
-    <!-- FOTO 03 -->
-    <figure class="story-figure mt-3">
-      <img src="<?= h(BASE_URL) ?>assets/img/historia/papercraft.jpg" alt="Modelos de papercraft e estudos em Blender" />
-      <figcaption class="story-cap">Espaço para fotos dos papercrafts, telas do Blender, moldes e montagens.</figcaption>
-    </figure>
-  </section>
+    <div class="embed-16x9">
+  <iframe src="https://www.youtube.com/embed/r2brlVOearQ?si=u9rQsZ0T-QnYZrT6"
+          title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+</div>
+    <figcaption class="story-cap">Reportagem para a TV Jangadeiro em 2018 sobre Papercraft.</figcaption></section>    
 
   <!-- SEÇÃO 3 -->
   <section class="story-section mb-5">
